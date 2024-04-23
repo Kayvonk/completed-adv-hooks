@@ -1,0 +1,6 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  height: 70px;
+  background: #2b2b2b;
+}
