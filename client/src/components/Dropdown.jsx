@@ -10,10 +10,10 @@ const Dropdown = () => {
           <div className="line"></div>
         </div>
         <div id="dropdownMenuContainer">
+          <Link to="/useRef" className="dropdownItem">useRef</Link>
+          <Link to="/useDebounce" className="dropdownItem">useDebounce</Link>
           <Link to="/useMemo" className="dropdownItem">useMemo</Link>
           <Link to="/useLayoutEffect" className="dropdownItem">useLayoutEffect</Link>
-          <Link to="/useRef" className="dropdownItem">useRef</Link>
-          <Link to="/useDebugValue" className="dropdownItem">useDebugValue</Link>
         </div>
       </div>
     </>

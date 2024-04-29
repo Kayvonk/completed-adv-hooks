@@ -6,7 +6,7 @@ import { Landing } from "./pages/Landing";
 import UseMemoModule from "./pages/UseMemoModule";
 import UseLayoutModule from "./pages/UseLayoutModule";
 import UseRefModule from "./pages/UseRefModule";
-import UseDebugValue from "./pages/UseDebugValue";
+import UseDebounceModule from "./pages/UseDebounceModule";
 
 function App() {
   return (
@@ -15,10 +15,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} exact />
+          <Route path="/useRef" element={<UseRefModule />} exact />
+          <Route path="/useDebounce" element={<UseDebounceModule />} exact />
           <Route path="/useMemo" element={<UseMemoModule />} />
           <Route path="/useLayoutEffect" element={<UseLayoutModule />} exact />
-          <Route path="/useRef" element={<UseRefModule />} exact />
-          <Route path="/useDebugValue" element={<UseDebugValue />} exact />
         </Routes>
       </Router>
       <Footer />

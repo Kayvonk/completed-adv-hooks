@@ -3,3 +3,7 @@ body {
   height: 100vh;
   background: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
 }
+
+section {
+  height: calc(100vh - 150px)
+}
