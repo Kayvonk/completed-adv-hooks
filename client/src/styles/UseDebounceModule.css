@@ -1,24 +1,19 @@
-
-.useDebounceModuleMain{
-  display: flex;  
+.useDebounceModuleMain {
+  display: flex;
 }
 
 .useDebounceModuleFigure {
-    overflow-y: auto    ;
+  overflow-y: auto;
 }
 
-
-.filteredUsersDiv{
-    height: 40vh;
-    overflow-y: scroll;
-    width: 170px;
+.filteredUsersDiv {
+  height: 40vh;
+  overflow-y: scroll;
+  width: 170px;
 }
-
 
 @media (max-width: 900px) {
-
-    .useDebounceModuleMain{
-        flex-direction: column;
-      }
+  .useDebounceModuleMain {
+    flex-direction: column;
   }
-  
+}

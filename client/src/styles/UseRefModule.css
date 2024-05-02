@@ -1,34 +1,29 @@
+.useRefModuleMain {
+  position: relative;
+}
+
 .centeredSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .centeredSection input {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .useRefModuleSection {
-    margin-left: 50px;
-}
-
-.infoBtn {
-  /* position: absolute  ; */
-  width: 500px;
-  height: 500px;
-  z-index: 99;
-  background-color: black;
+  margin-left: 50px;
 }
 
 @media (max-width: 900px) {
-    .useRefModuleMain {
-flex-direction: column;
-    }
-    .useRefModuleSection {
-        margin-left: 0px;
-        margin-top: 60px;
-    }
+  .useRefModuleMain {
+    flex-direction: column;
   }
-
+  .useRefModuleSection {
+    margin-left: 0px;
+    margin-top: 60px;
+  }
+}

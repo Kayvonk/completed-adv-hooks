@@ -3,7 +3,16 @@ body {
   min-height: 100vh;
   background: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
   background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-attachment: fixed;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 22pt;
 }
 
 main {
@@ -13,13 +22,91 @@ main {
 
 figure {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.infoBtn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 25px;
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+  background-color: #dedede;
+  border-radius: 50%;
+  border: none;
+  padding: 10px 8px;
+  min-width: fit-content;
+  font-size: 9pt;
+  box-shadow: 0px 2px 10px -5px rgba(94, 94, 94, 0.75);
+}
+
+.infoBtn:hover {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 10px 12px 10px -5px rgba(94, 94, 94, 0.75);
+}
+
+.infoCardContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+  height: 70vh;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  width: 90%;
+}
+
+.infoCardContainer card {
+  background-color: #2b2b2b;
+  color: white;
+  font-size: 14pt;
+  padding: 20px 50px;
+  border-radius: 30pt;
+}
+
+.cardInactive {
+  display: none;
+}
+.cardActive {
+  display: flex;
+}
+
+/* .card1{
+  animation: slideDown linear 1.8s forwards;
+  transition: ease-in-out 0.1s;
+}
+ .card2{
+  animation: slideDown linear 1.8s .1s forwards;
+  transition: ease-in-out 0.1s;
+}
+ .card3{
+  animation: slideDown linear 1.8s .2s forwards;
+  transition: ease-in-out 0.1s;
+}
+ .card4{
+  animation: slideDown linear 1.8s .3s forwards;
+  transition: ease-in-out 0.1s;
+} */
+
+/* @keyframes slideDown {
+  0% {
+    transform: translateY(-2vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0vh);
+    opacity: 1;
+  }
+} */
 
 @media (max-width: 900px) {
   main {
     height: auto;
   }
   .searchInput {
-    margin-top: 60px ;
+    margin-top: 60px;
   }
 }

@@ -1,13 +1,12 @@
-/* .useLayoutModuleMain {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+.useLayoutModuleMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (max-width: 900px) {
-    .useLayoutModuleMain{
-        margin-top: 35px;
-    }
-    
+  .useLayoutModuleMain {
+    margin-top: 35px;
+    flex-direction: column;
   }
-  
+}
