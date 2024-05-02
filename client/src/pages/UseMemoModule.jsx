@@ -1,12 +1,18 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { intialItems } from "../utils/largeArray";
 import data from "../assets/data.jsx";
 import { CMirror } from "../components/Cmirror.jsx";
 import "../styles/UseMemoModule.css";
 
-export default function UseMemoModule() {
+export default function UseMemoModule({isDesktop}) {
   const [count, setCount] = useState(0);
   const [items] = useState(intialItems);
+
+
+  // useEffect(() => {
+  //   document.body.style.background =
+  //   "linear-gradient(to top, #00c6fb 0%, #005bea 100%)"
+  // }, []);
 
   //  const selectedItem = items?.find((element) => element.isCorrect)
 
@@ -30,7 +36,7 @@ export default function UseMemoModule() {
       </section>
       <figure>
         <CMirror
-     width="auto"
+     width={isDesktop ? "auto" : "80vw"}
      height="60vh"
      maxWidth="auto"
           CSSInitialState={null}

@@ -19,6 +19,7 @@
   justify-content: center;
   align-items: center;
   width: auto;
+  height: auto;
 }
 
 .useMemoModuleSection {
@@ -32,4 +33,17 @@
 .useMemoModuleSection h3, .useMemoModuleSection h4 {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
+
+@media (max-width: 900px) {
+  .useMemoModuleMain {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .useMemoModuleBtn {
+    margin: 30px 0px 0px 0px ;
+
+  }
+}
+

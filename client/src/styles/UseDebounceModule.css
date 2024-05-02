@@ -1,4 +1,9 @@
-.UseDebounceModuleFigure {
+
+.useDebounceModuleMain{
+  display: flex;  
+}
+
+.useDebounceModuleFigure {
     overflow-y: auto    ;
 }
 
@@ -8,3 +13,12 @@
     overflow-y: scroll;
     width: 170px;
 }
+
+
+@media (max-width: 900px) {
+
+    .useDebounceModuleMain{
+        flex-direction: column;
+      }
+  }
+  

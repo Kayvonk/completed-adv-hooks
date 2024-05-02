@@ -7,8 +7,22 @@ import UseMemoModule from "./pages/UseMemoModule";
 import UseLayoutModule from "./pages/UseLayoutModule";
 import UseRefModule from "./pages/UseRefModule";
 import UseDebounceModule from "./pages/UseDebounceModule";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 769);
+
+  useEffect(() => {
+    window.addEventListener("resize", checkWindowSize);
+    return () => window.removeEventListener("resize", checkWindowSize);
+  });
+  const checkWindowSize = () => {
+    setDesktop(window.innerWidth > 769);
+console.log(window.innerWidth );
+  };
+
+
+
   return (
     <>
       <Router>
@@ -17,11 +31,11 @@ function App() {
           <Route path="/" element={<Landing />} exact />
           <Route path="/useRef" element={<UseRefModule />} exact />
           <Route path="/useDebounce" element={<UseDebounceModule />} exact />
-          <Route path="/useMemo" element={<UseMemoModule />} />
+          <Route path="/useMemo" element={<UseMemoModule isDesktop={isDesktop}/>} />
           <Route path="/useLayoutEffect" element={<UseLayoutModule />} exact />
         </Routes>
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

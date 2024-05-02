@@ -1,18 +1,23 @@
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+  background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 main {
   height: calc(100vh - 150px);
-  width: 100%
-}
-
-figure {
-  display: flex;
-  justify-content: center;
   width: 100%;
-  margin: 0px
 }
 
+
+
+@media (max-width: 900px) {
+  main {
+    height: auto;
+  }
+  .searchInput {
+    margin-top: 30px ;
+  }
+}

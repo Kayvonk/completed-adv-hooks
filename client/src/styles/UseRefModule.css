@@ -9,3 +9,17 @@
 .centeredSection input {
     margin-bottom: 50px;
 }
+
+.useRefModuleSection {
+    margin-left: 50px;
+}
+@media (max-width: 900px) {
+    .useRefModuleMain {
+flex-direction: column;
+    }
+    .useRefModuleSection {
+        margin-left: 0px;
+        margin-top: 30px;
+    }
+  }
+
