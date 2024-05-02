@@ -5,7 +5,7 @@ import data from "../assets/data.jsx"
 import { CMirror } from "../components/Cmirror.jsx";
 import "../styles/UseDebounceModule.css"
 
-export default function UseDebounceModule() {
+export default function UseDebounceModule({isDesktop}) {
   const [users, setUsers] = useState([]);
   const [searchTerm, setsearchTerm] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -51,7 +51,7 @@ export default function UseDebounceModule() {
       </section>
       <figure className="useDebounceModuleFigure">
           <CMirror
-     width="auto"
+     width={isDesktop ? "auto" : "85vw"}
      height="60vh"
      maxWidth="90vw"
            CSSInitialState={null}

@@ -29,8 +29,8 @@ console.log(window.innerWidth );
         <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} exact />
-          <Route path="/useRef" element={<UseRefModule />} exact />
-          <Route path="/useDebounce" element={<UseDebounceModule />} exact />
+          <Route path="/useRef" element={<UseRefModule isDesktop={isDesktop}/>} exact />
+          <Route path="/useDebounce" element={<UseDebounceModule isDesktop={isDesktop}/>} exact />
           <Route path="/useMemo" element={<UseMemoModule isDesktop={isDesktop}/>} />
           <Route path="/useLayoutEffect" element={<UseLayoutModule />} exact />
         </Routes>

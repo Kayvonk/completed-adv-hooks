@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect } from "react";
 import data from "../assets/data.jsx"
 import { CMirror } from "../components/Cmirror.jsx";
+import "../styles/useLayoutModule.css"
 
 export default function UseLayoutModule() {
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function UseLayoutModule() {
       "linear-gradient(to top, red 0%, orange 100%)";
   }, []);
 
-  return <main>
+  return <main className="useLayoutModuleMain">
         <figure>
           <CMirror
            width="75vw"

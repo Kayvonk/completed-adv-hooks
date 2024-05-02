@@ -3,7 +3,7 @@ import { CMirror } from "../components/Cmirror";
 import data from "../assets/data.jsx";
 import "../styles/UseRefModule.css";
 
-export default function UseRefModule() {
+export default function UseRefModule({isDesktop}) {
   const inputRef = useRef();
   const previousSearchRef = useRef();
   const [searchTerm, setsearchTerm] = useState("");
@@ -44,7 +44,8 @@ export default function UseRefModule() {
       </section>
       <figure>
         <CMirror
-          width="auto"
+          width={isDesktop ? "auto" : "85vw"}
+          // width="auto" 
           height="60vh"
           maxWidth="90vw"
           CSSInitialState={null}

@@ -36,7 +36,8 @@ export default function UseMemoModule({isDesktop}) {
       </section>
       <figure>
         <CMirror
-     width={isDesktop ? "auto" : "80vw"}
+    //  width="auto"
+     width={isDesktop ? "auto" : "85vw"}
      height="60vh"
      maxWidth="auto"
           CSSInitialState={null}
