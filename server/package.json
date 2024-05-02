@@ -7,7 +7,7 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node utils/seed.js",
-    "client": "cd client && npm run dev",
+    "client": "cd ../client && npm run dev",
     "dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\""
   },
   "author": "",
