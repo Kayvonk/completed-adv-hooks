@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { CMirror } from "../components/Cmirror";
 import data from "../assets/data.jsx";
 import "../styles/UseRefModule.css";
@@ -8,10 +8,10 @@ export default function UseRefModule() {
   const previousSearchRef = useRef();
   const [searchTerm, setsearchTerm] = useState("");
 
-  // useEffect(() => {
-  //   document.body.style.background =
-  //   "linear-gradient(to top, #00c6fb 0%, #005bea 100%)";
-  // }, []);
+  useLayoutEffect(() => {
+    document.body.style.background =
+    "linear-gradient(to top, #00c6fb 0%, #005bea 100%)";
+  }, []);
 
 
   const handleChange = (e) => {

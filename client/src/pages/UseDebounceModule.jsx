@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import { API } from "../utils/API.jsx";
 import { useDebounce } from "../utils/useDebounce.jsx";
 import data from "../assets/data.jsx"
@@ -11,11 +11,10 @@ export default function UseDebounceModule() {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
 
-
-  // useEffect(() => {
-  //   document.body.style.background =
-  //     "linear-gradient(to top, #00c6fb 0%, #005bea 100%)"
-  // }, []);
+  useLayoutEffect(() => {
+    document.body.style.background =
+      "linear-gradient(to top, #00c6fb 0%, #005bea 100%)"
+  }, []);
 
   const handleChange = (e) => {
     setsearchTerm(e.target.value);
@@ -30,11 +29,6 @@ export default function UseDebounceModule() {
       users?.filter((users) => users.userName.includes(searchTerm))
     );
   }, [debouncedSearchTerm]);
-
-  // useEffect(() => {
-  // if (!users) return
-  // console.log("users:", users);
-  // }, [users])
 
   return (
     <main className="useDebounceModuleMain">

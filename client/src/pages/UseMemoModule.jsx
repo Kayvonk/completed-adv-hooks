@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useLayoutEffect } from "react";
 import { intialItems } from "../utils/largeArray";
 import data from "../assets/data.jsx";
 import { CMirror } from "../components/Cmirror.jsx";
@@ -9,10 +9,10 @@ export default function UseMemoModule({isDesktop}) {
   const [items] = useState(intialItems);
 
 
-  // useEffect(() => {
-  //   document.body.style.background =
-  //   "linear-gradient(to top, #00c6fb 0%, #005bea 100%)"
-  // }, []);
+  useLayoutEffect(() => {
+    document.body.style.background =
+    "linear-gradient(to top, #00c6fb 0%, #005bea 100%)"
+  }, []);
 
   //  const selectedItem = items?.find((element) => element.isCorrect)
 
