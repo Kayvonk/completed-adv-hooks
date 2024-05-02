@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { API } from "../utils/API.jsx";
 import { useDebounce } from "../utils/useDebounce.jsx";
+import data from "../assets/data.jsx"
+import { CMirror } from "../components/Cmirror.jsx";
+import "../styles/UseDebounceModule.css"
 
 export default function UseDebounceModule() {
   const [users, setUsers] = useState([]);
@@ -17,8 +20,6 @@ export default function UseDebounceModule() {
   }, []);
 
   useEffect(() => {
-    console.log(searchTerm);
-    // setFilteredUsers(users?.filter((users) => users.userName === searchTerm))
     setFilteredUsers(
       users?.filter((users) => users.userName.includes(searchTerm))
     );
@@ -30,16 +31,34 @@ export default function UseDebounceModule() {
   // }, [users])
 
   return (
-    <section>
+    <main>
+      <section className="centeredSection">
       <input
+      style={{marginBottom: "10px", marginLeft: "50px", marginRight: "50px"}}
         type="text"
         value={searchTerm}
         onChange={handleChange}
         placeholder="Search users..."
-      />
+        />
+        <div className="filteredUsersDiv sc">
+
+
       {filteredUsers?.map((user) => {
         return <div key={user._id}>{user.userName} </div>;
       })}
-    </section>
+
+      </div>
+      </section>
+      <figure className="UseDebounceModuleFigure">
+          <CMirror
+     width="auto"
+     height="60vh"
+     maxWidth="90vw"
+           CSSInitialState={null}
+           JSInitialState={null}
+           bodyInitialState={data[1].bodyCode}
+          />
+        </figure>
+    </main>
   );
 }

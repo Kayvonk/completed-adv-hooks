@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { CMirror } from "../components/Cmirror";
+import data from "../assets/data.jsx"
+import "../styles/UseRefModule.css"
 
 export default function UseRefModule() {
   const inputRef = useRef();
@@ -14,15 +17,13 @@ export default function UseRefModule() {
   }, []);
 
   useEffect(() => {
-    console.log("====================================");
-    console.log("searchTerm:", searchTerm);
-    console.log("inputRef.current.value:", inputRef.current.value);
     previousSearchRef.current = searchTerm;
-    console.log("====================================");
   }, [searchTerm]);
 
   return (
-    <section>
+    <main>
+
+<section style={{marginLeft: "50px"}} className="centeredSection">
       <input
         id="searchInput"
         value={searchTerm}
@@ -30,11 +31,22 @@ export default function UseRefModule() {
         ref={inputRef}
         type="text"
         placeholder="Type here..."
-      ></input>
+        ></input>
       <div>
         Search value is {searchTerm} and the previous value{" "}
         {previousSearchRef.current}
       </div>
-    </section>
+        </section>
+        <figure>
+          <CMirror
+     width="auto"
+     height="60vh"
+     maxWidth="90vw"
+           CSSInitialState={null}
+           JSInitialState={null}
+           bodyInitialState={data[0].bodyCode}
+          />
+        </figure>
+    </main>
   );
 }

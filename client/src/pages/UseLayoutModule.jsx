@@ -1,15 +1,29 @@
 import { useEffect, useLayoutEffect } from "react";
+import data from "../assets/data.jsx"
+import { CMirror } from "../components/Cmirror.jsx";
 
 export default function UseLayoutModule() {
   useEffect(() => {
     document.body.style.background =
-      "linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%)";
+      "linear-gradient(to top, purple 0%, pink 100%)";
   }, []);
 
   useLayoutEffect(() => {
     document.body.style.background =
-      "linear-gradient(to top, #ff0844 0%, #ffb199 100%)";
+      "linear-gradient(to top, red 0%, orange 100%)";
   }, []);
 
-  return <section></section>;
+  return <main>
+        <figure>
+          <CMirror
+           width="75vw"
+           height="60vh"
+           maxWidth="90vw"
+           CSSInitialState={null}
+           JSInitialState={null}
+           bodyInitialState={data[3].bodyCode}
+          />
+        </figure>
+        
+  </main>;
 }

@@ -1,0 +1,10 @@
+.UseDebounceModuleFigure {
+    overflow-y: auto    ;
+}
+
+
+.filteredUsersDiv{
+    height: 40vh;
+    overflow-y: scroll;
+    width: 170px;
+}

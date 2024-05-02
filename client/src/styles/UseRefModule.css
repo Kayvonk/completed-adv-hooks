@@ -1,0 +1,11 @@
+.centeredSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.centeredSection input {
+    margin-bottom: 50px;
+}
