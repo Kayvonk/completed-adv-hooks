@@ -53,6 +53,8 @@ export default function UseRefModule({isDesktop}) {
           bodyInitialState={data[0].bodyCode}
         />
       </figure>
+        <div className=".infoBtn"></div>
+
     </main>
   );
 }

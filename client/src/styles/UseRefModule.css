@@ -13,6 +13,15 @@
 .useRefModuleSection {
     margin-left: 50px;
 }
+
+.infoBtn {
+  /* position: absolute  ; */
+  width: 500px;
+  height: 500px;
+  z-index: 99;
+  background-color: black;
+}
+
 @media (max-width: 900px) {
     .useRefModuleMain {
 flex-direction: column;

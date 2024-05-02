@@ -44,6 +44,7 @@ export default function UseMemoModule({isDesktop}) {
           JSInitialState={null}
           bodyInitialState={data[2].bodyCode}
         />
+        
       </figure>
     </main>
   );

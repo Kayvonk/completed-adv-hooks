@@ -11,7 +11,9 @@ main {
   width: 100%;
 }
 
-
+figure {
+  position: relative;
+}
 
 @media (max-width: 900px) {
   main {

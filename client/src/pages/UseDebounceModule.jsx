@@ -2,6 +2,7 @@ import { useEffect, useState, useLayoutEffect } from "react";
 import { API } from "../utils/API.jsx";
 import { useDebounce } from "../utils/useDebounce.jsx";
 import data from "../assets/data.jsx"
+import userData from "../assets/users.jsx"
 import { CMirror } from "../components/Cmirror.jsx";
 import "../styles/UseDebounceModule.css"
 
@@ -21,8 +22,10 @@ export default function UseDebounceModule({isDesktop}) {
   };
 
   useEffect(() => {
-    API.getAllUsers().then((res) => setUsers(res.data));
-  }, []);
+    // API.getAllUsers().then((res) => setUsers(res.data));
+    if(!userData) return
+    setUsers(userData);
+  }, [userData]);
 
   useEffect(() => {
     setFilteredUsers(

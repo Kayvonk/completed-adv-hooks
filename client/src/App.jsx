@@ -10,15 +10,14 @@ import UseDebounceModule from "./pages/UseDebounceModule";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [isDesktop, setDesktop] = useState(window.innerWidth > 769);
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 900);
 
   useEffect(() => {
     window.addEventListener("resize", checkWindowSize);
     return () => window.removeEventListener("resize", checkWindowSize);
   });
   const checkWindowSize = () => {
-    setDesktop(window.innerWidth > 769);
-console.log(window.innerWidth );
+    setDesktop(window.innerWidth > 900);
   };
 
 
