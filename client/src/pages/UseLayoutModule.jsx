@@ -5,6 +5,7 @@ import "../styles/useLayoutModule.css";
 
 export default function UseLayoutModule() {
   const [figureOpacity, setFigureOpacity] = useState(1);
+  const [infoZIndex, setInfoZIndex] = useState(6)
 
   const handleInfoBtn = () => {
     setFigureOpacity(figureOpacity === 1 ? 0.75 : 1);
@@ -34,38 +35,38 @@ export default function UseLayoutModule() {
             bodyInitialState={data[3].bodyCode}
           />
         </figure>
-        <div className="infoCardContainer">
-          <card
+        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+          <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1 cardActive"
+              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
             }
           >
             Behaves similarly to useEffect, but happens synchronously with the
             DOM mutations.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2 cardActive"
+              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
             }
           >
             As a result, a useLayoutEffect will always occur before a useEffect.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3 cardActive"
+              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
             }
           >
             The page will not render until the code within the useLayoutEffect
             is executed.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card4 cardInactive" : "card4 cardActive"
+              figureOpacity === 1 ? "card4 cardInactive" : "card4Active cardActive"
             }
           >
             Can be a bad idea on bigger operations since it blocks the rendering
             of the application.
-          </card>
+          </div>
         </div>
         <button className="infoBtn" onClick={handleInfoBtn}>
           i

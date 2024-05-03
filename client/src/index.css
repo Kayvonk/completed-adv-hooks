@@ -25,15 +25,18 @@ figure {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 5;
 }
 
 .infoBtn {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 25px;
+  min-width: 50px;
+  min-height: 50px;
   width: 50px;
   height: 50px;
-  z-index: 1;
+  z-index: 4;
   background-color: #dedede;
   border-radius: 50%;
   border: none;
@@ -48,59 +51,142 @@ figure {
   box-shadow: 10px 12px 10px -5px rgba(94, 94, 94, 0.75);
 }
 
+/* .hide {
+  display: none;
+}
+
+.show {
+  display: flex;
+} */
+
 .infoCardContainer {
   display: flex;
   flex-direction: column;
-  min-height: 50vh;
-  height: 70vh;
+  min-height: 70vh;
   align-items: center;
   justify-content: space-around;
   position: absolute;
-  width: 90%;
+  bottom: 10px;
+  width: auto;
+  opacity: 0;
+  z-index: 6;
+  animation: containerAnimation 1s forwards ; 
+
 }
 
-.infoCardContainer card {
+.infoCardContainer div {
+  opacity: 0;
   background-color: #2b2b2b;
   color: white;
   font-size: 14pt;
   padding: 20px 50px;
   border-radius: 30pt;
+
 }
 
 .cardInactive {
-  display: none;
-}
-.cardActive {
-  display: flex;
+  animation: slideUp linear .6s forwards;
+
 }
 
-/* .card1{
-  animation: slideDown linear 1.8s forwards;
-  transition: ease-in-out 0.1s;
-}
- .card2{
-  animation: slideDown linear 1.8s .1s forwards;
-  transition: ease-in-out 0.1s;
-}
- .card3{
-  animation: slideDown linear 1.8s .2s forwards;
-  transition: ease-in-out 0.1s;
-}
- .card4{
-  animation: slideDown linear 1.8s .3s forwards;
-  transition: ease-in-out 0.1s;
+/* .cardActive {
+  animation: slideDown linear .6s forwards;
 } */
 
-/* @keyframes slideDown {
+.card1Active{
+  animation: slideDown linear .6s forwards;
+
+}
+ .card2Active{
+  animation: slideDown linear .6s .1s forwards;
+
+
+}
+ .card3Active{
+  animation: slideDown linear .6s .2s forwards;
+
+
+}
+ .card4Active{
+  animation: slideDown linear .6s .3s forwards;
+ 
+}
+
+/* .infoCardContainerInactive {
+  animation: lowerZIndex linear .6s forwards;
+
+}
+
+.infoCardContainerActive {
+  animation: raiseZIndex linear .6s forwards;
+
+} */
+
+@keyframes lowerZIndex {
+  0% {
+    z-index: 6;
+  }
+  99% {
+    z-index: 6;
+  }
+  100% {
+    z-index: 3;
+
+  }
+}
+
+@keyframes raiseZIndex {
+  0% {
+    z-index: 3;
+  }
+  99% {
+    z-index: 3;
+  }
+  100% {
+    z-index: 6;
+  }
+}
+
+
+@keyframes containerAnimation { 
+  0% { 
+      opacity: 0; 
+  } 
+  99% { 
+      opacity: 0; 
+  } 
+
+  100% { 
+      opacity: 1; 
+  } 
+} 
+
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0vh);
+    opacity: 1;
+
+  }
+  100% {
+    transform: translateY(-2vh);
+    opacity: 0;
+
+  }
+}
+
+@keyframes slideDown {
   0% {
     transform: translateY(-2vh);
     opacity: 0;
+    z-index: 3;
   }
   100% {
     transform: translateY(0vh);
     opacity: 1;
+    z-index: 6;
   }
-} */
+}
 
 @media (max-width: 900px) {
   main {
@@ -108,5 +194,8 @@ figure {
   }
   .searchInput {
     margin-top: 60px;
+  }
+  .infoCardContainer {
+    bottom: 15vh;
   }
 }

@@ -1,6 +1,8 @@
 .useDebounceModuleMain {
+  position: relative;
   display: flex;
-}
+  justify-content: center;
+  align-items: center;}
 
 .useDebounceModuleFigure {
   overflow-y: auto;

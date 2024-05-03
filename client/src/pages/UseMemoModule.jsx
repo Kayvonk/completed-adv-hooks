@@ -8,6 +8,7 @@ export default function UseMemoModule({ isDesktop }) {
   const [count, setCount] = useState(0);
   const [items] = useState(intialItems);
   const [figureOpacity, setFigureOpacity] = useState(1);
+  const [infoZIndex, setInfoZIndex] = useState(6)
 
   useLayoutEffect(() => {
     document.body.style.background =
@@ -51,34 +52,31 @@ export default function UseMemoModule({ isDesktop }) {
             bodyInitialState={data[2].bodyCode}
           />
         </figure>
-        <div className="infoCardContainer">
-          <card
+        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+          <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1 cardActive"
+              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
             }
           >
-            {" "}
             A hook used to prevent hefty expensive code from running needlessly
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2 cardActive"
+              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
             }
           >
-            {" "}
             The useMemo hooks will only run when one of the values in the
             depencency array changes.{" "}
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3 cardActive"
+              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
             }
-          >
-            {" "}
+          >           
             Can improve performance if used correctly, or worsen performance if
             misused.
-          </card>
-          {/* <card className={figureOpacity === 1 ? "card4 cardInactive" : "card4 cardActive"}></card> */}
+          </div>
+          {/* <div className={figureOpacity === 1 ? "card4 cardInactive" : "card4 cardActive"}></div> */}
         </div>
         <button className="infoBtn" onClick={handleInfoBtn}>
           i

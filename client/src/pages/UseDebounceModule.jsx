@@ -1,5 +1,5 @@
 import { useEffect, useState, useLayoutEffect } from "react";
-import { API } from "../utils/API.jsx";
+// import { API } from "../utils/API.jsx";
 import { useDebounce } from "../utils/useDebounce.jsx";
 import data from "../assets/data.jsx";
 import userData from "../assets/users.jsx";
@@ -12,12 +12,26 @@ export default function UseDebounceModule({ isDesktop }) {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
   const [figureOpacity, setFigureOpacity] = useState(1);
+const [infoZIndex, setInfoZIndex] = useState(6)
+
 
   useLayoutEffect(() => {
     document.body.style.background =
       "linear-gradient(to top, #00c6fb 0%, #005bea 100%)";
   }, []);
 
+useEffect(() => {
+  if(figureOpacity === 1){
+    setTimeout(() => {
+      setInfoZIndex(3)
+    }, 600);
+  }
+  else {
+    setInfoZIndex(6)
+  }
+}, [figureOpacity])
+
+  
   const handleChange = (e) => {
     setsearchTerm(e.target.value);
   };
@@ -73,35 +87,35 @@ export default function UseDebounceModule({ isDesktop }) {
             bodyInitialState={data[1].bodyCode}
           />
         </figure>
-        <div className="infoCardContainer">
-          <card
+        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+          <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1 cardActive"
+              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
             }
           >
             Used to delay the execution of code.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2 cardActive"
+              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
             }
           >
             This is commonly a custom hook created with the name useDebounce.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3 cardActive"
+              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
             }
           >
-            Can be used to create a delay on search input updates, creating a smooth UX.
-          </card>
-          <card
+            Can be used to create a delay on search input updates, creating a smoother UX.
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card4 cardInactive" : "card4 cardActive"
+              figureOpacity === 1 ? "card4 cardInactive" : "card4Active cardActive"
             }
           >
             Can be used to limit the rate at which API queries occur.
-          </card>
+          </div>
         </div>
         <button className="infoBtn" onClick={handleInfoBtn}>
           i

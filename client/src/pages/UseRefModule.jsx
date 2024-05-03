@@ -8,6 +8,7 @@ export default function UseRefModule({ isDesktop }) {
   const previousSearchRef = useRef();
   const [searchTerm, setsearchTerm] = useState("");
   const [figureOpacity, setFigureOpacity] = useState(1);
+  const [infoZIndex, setInfoZIndex] = useState(6)
 
   useLayoutEffect(() => {
     document.body.style.background =
@@ -60,35 +61,35 @@ export default function UseRefModule({ isDesktop }) {
             bodyInitialState={data[0].bodyCode}
           />
         </figure>
-        <div className="infoCardContainer">
-          <card
+        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+          <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1 cardActive"
+              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
             }
           >
            A ref from useRef does not trigger a rerender when its value changes.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2 cardActive"
+              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
             }
           >
             Can be used for values that are not needed for rendering.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3 cardActive"
+              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
             }
           >
             Can be used on a number of elements including inputs and forms.
-          </card>
-          <card
+          </div>
+          <div
             className={
-              figureOpacity === 1 ? "card4 cardInactive" : "card4 cardActive"
+              figureOpacity === 1 ? "card4 cardInactive" : "card4Active cardActive"
             }
           >
             Can be used to hold the previous value of a state.
-          </card>
+          </div>
         </div>
         <button className="infoBtn" onClick={handleInfoBtn}>
           i
