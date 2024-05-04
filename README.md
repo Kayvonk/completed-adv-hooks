@@ -7,7 +7,7 @@
 
 ## Description
 Adv-React-Hooks is an application and educational resource for learning more about React hooks. 
-![HomeThumbnail](/assets/hooksThumbnail.PNG)
+![HomeThumbnail](./assets/hooksThumbnail.PNG)
 
 
 ## Usage
