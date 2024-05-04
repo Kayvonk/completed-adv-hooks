@@ -2,6 +2,8 @@ import { useState, useMemo, useLayoutEffect, useEffect } from "react";
 import { intialItems } from "../utils/largeArray";
 import data from "../assets/data.jsx";
 import { CMirror } from "../components/Cmirror.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import "../styles/UseMemoModule.css";
 
 export default function UseMemoModule({ isDesktop }) {
@@ -116,10 +118,17 @@ export default function UseMemoModule({ isDesktop }) {
             Can improve performance if used correctly, or worsen performance if
             misused.
           </div>
-          {/* <div className={figureOpacity === 1 ? "card4 cardInactive" : "card4 cardActive"}></div> */}
+          {/* <div
+            className={
+              figureOpacity === 1
+                ? "card4 cardInactive"
+                : "card4Active cardActive"
+            }
+          >           
+          </div> */}
         </div>
         <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
-          i
+        <FontAwesomeIcon className="infoIcon" icon={faInfo} />
         </button>
       </main>
     </>

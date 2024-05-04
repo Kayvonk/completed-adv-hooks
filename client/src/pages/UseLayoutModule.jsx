@@ -1,6 +1,8 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import data from "../assets/data.jsx";
 import { CMirror } from "../components/Cmirror.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import "../styles/useLayoutModule.css";
 
 export default function UseLayoutModule() {
@@ -111,7 +113,7 @@ export default function UseLayoutModule() {
           </div>
         </div>
         <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
-          i
+        <FontAwesomeIcon className="infoIcon" icon={faInfo} />
         </button>
       </main>
     </>

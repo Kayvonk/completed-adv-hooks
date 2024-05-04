@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import { CMirror } from "../components/Cmirror";
 import data from "../assets/data.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import "../styles/UseRefModule.css";
 
 export default function UseRefModule({ isDesktop }) {
@@ -135,7 +137,7 @@ export default function UseRefModule({ isDesktop }) {
           </div>
         </div>
         <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
-          i
+        <FontAwesomeIcon className="infoIcon" icon={faInfo} />
         </button>
       </main>
     </>

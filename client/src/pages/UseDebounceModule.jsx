@@ -4,6 +4,8 @@ import { useDebounce } from "../utils/useDebounce.jsx";
 import data from "../assets/data.jsx";
 import userData from "../assets/users.jsx";
 import { CMirror } from "../components/Cmirror.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import "../styles/UseDebounceModule.css";
 
 export default function UseDebounceModule({ isDesktop }) {
@@ -149,7 +151,7 @@ export default function UseDebounceModule({ isDesktop }) {
           </div>
         </div>
         <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
-          i
+        <FontAwesomeIcon className="infoIcon" icon={faInfo} />
         </button>
       </main>
     </>
