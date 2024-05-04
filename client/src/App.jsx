@@ -20,8 +20,6 @@ function App() {
     setDesktop(window.innerWidth > 900);
   };
 
-
-
   return (
     <>
       <Router>

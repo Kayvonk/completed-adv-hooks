@@ -1,6 +1,13 @@
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   height: 70px;
   background: #2b2b2b;
+}
+
+.homeIcon {
+  color: #f2f2f2;
+  font-size: 24px;
+  margin-left: 20px;
 }
