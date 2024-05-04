@@ -10,12 +10,17 @@ export default function UseRefModule({ isDesktop }) {
   const [figureOpacity, setFigureOpacity] = useState(1);
   const [infoZIndex, setInfoZIndex] = useState(3);
   const [loading, setLoading] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(true)
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 250);
+    setTimeout(() => {
+      setButtonDisabled(false)
+    }, 600);
   }, []);
+
 
   useEffect(() => {
     if (loading) return;
@@ -39,6 +44,10 @@ export default function UseRefModule({ isDesktop }) {
 
   const handleInfoBtn = () => {
     setFigureOpacity(figureOpacity === 1 ? 0.75 : 1);
+    setButtonDisabled(true)
+    setTimeout(() => {
+      setButtonDisabled(false)
+    }, 600);
   };
 
   useEffect(() => {
@@ -125,7 +134,7 @@ export default function UseRefModule({ isDesktop }) {
             Can be used to hold the previous value of a state.
           </div>
         </div>
-        <button className="infoBtn" onClick={handleInfoBtn}>
+        <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
           i
         </button>
       </main>

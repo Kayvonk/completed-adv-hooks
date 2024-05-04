@@ -10,12 +10,17 @@ export default function UseMemoModule({ isDesktop }) {
   const [figureOpacity, setFigureOpacity] = useState(1);
   const [infoZIndex, setInfoZIndex] = useState(3);
   const [loading, setLoading] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(true)
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 250);
+    setTimeout(() => {
+      setButtonDisabled(false)
+    }, 600);
   }, []);
+
 
   useEffect(() => {
     if (loading) return;
@@ -37,6 +42,10 @@ export default function UseMemoModule({ isDesktop }) {
 
   const handleInfoBtn = () => {
     setFigureOpacity(figureOpacity === 1 ? 0.75 : 1);
+    setButtonDisabled(true)
+    setTimeout(() => {
+      setButtonDisabled(false)
+    }, 600);
   };
 
   const selectedItem = useMemo(
@@ -109,7 +118,7 @@ export default function UseMemoModule({ isDesktop }) {
           </div>
           {/* <div className={figureOpacity === 1 ? "card4 cardInactive" : "card4 cardActive"}></div> */}
         </div>
-        <button className="infoBtn" onClick={handleInfoBtn}>
+        <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
           i
         </button>
       </main>

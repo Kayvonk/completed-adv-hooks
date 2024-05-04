@@ -14,11 +14,15 @@ export default function UseDebounceModule({ isDesktop }) {
   const [figureOpacity, setFigureOpacity] = useState(1);
   const [infoZIndex, setInfoZIndex] = useState(3);
   const [loading, setLoading] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(true)
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 250);
+    setTimeout(() => {
+      setButtonDisabled(false)
+    }, 600);
   }, []);
 
   useEffect(() => {
@@ -30,6 +34,8 @@ export default function UseDebounceModule({ isDesktop }) {
     } else {
       setInfoZIndex(6);
     }
+
+
   }, [figureOpacity]);
 
   useLayoutEffect(() => {
@@ -43,6 +49,10 @@ export default function UseDebounceModule({ isDesktop }) {
 
   const handleInfoBtn = () => {
     setFigureOpacity(figureOpacity === 1 ? 0.75 : 1);
+    setButtonDisabled(true)
+    setTimeout(() => {
+      setButtonDisabled(false)
+    }, 600);
   };
 
   useEffect(() => {
@@ -138,7 +148,7 @@ export default function UseDebounceModule({ isDesktop }) {
             Can be used to limit the rate at which API queries occur.
           </div>
         </div>
-        <button className="infoBtn" onClick={handleInfoBtn}>
+        <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
           i
         </button>
       </main>
