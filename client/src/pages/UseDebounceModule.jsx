@@ -12,26 +12,31 @@ export default function UseDebounceModule({ isDesktop }) {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const debouncedSearchTerm = useDebounce(searchTerm, 1000);
   const [figureOpacity, setFigureOpacity] = useState(1);
-const [infoZIndex, setInfoZIndex] = useState(6)
+  const [infoZIndex, setInfoZIndex] = useState(3);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 250);
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+    if (figureOpacity === 1) {
+      setTimeout(() => {
+        setInfoZIndex(3);
+      }, 600);
+    } else {
+      setInfoZIndex(6);
+    }
+  }, [figureOpacity]);
 
   useLayoutEffect(() => {
     document.body.style.background =
       "linear-gradient(to top, #00c6fb 0%, #005bea 100%)";
   }, []);
 
-useEffect(() => {
-  if(figureOpacity === 1){
-    setTimeout(() => {
-      setInfoZIndex(3)
-    }, 600);
-  }
-  else {
-    setInfoZIndex(6)
-  }
-}, [figureOpacity])
-
-  
   const handleChange = (e) => {
     setsearchTerm(e.target.value);
   };
@@ -54,7 +59,7 @@ useEffect(() => {
 
   return (
     <>
-      <header>useDebounce</header>
+      <header className="useDebounceHeader">useDebounce</header>
       <main className="useDebounceModuleMain">
         <section className="centeredSection searchInput">
           <input
@@ -87,31 +92,47 @@ useEffect(() => {
             bodyInitialState={data[1].bodyCode}
           />
         </figure>
-        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+        <div
+          style={{ zIndex: infoZIndex }}
+          className={
+            figureOpacity === 1
+              ? "infoCardContainer infoCardContainerInactive"
+              : "infoCardContainer infoCardContainerActive"
+          }
+        >
           <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
+              figureOpacity === 1
+                ? "card1 cardInactive"
+                : "card1Active cardActive"
             }
           >
             Used to delay the execution of code.
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
+              figureOpacity === 1
+                ? "card2 cardInactive"
+                : "card2Active cardActive"
             }
           >
             This is commonly a custom hook created with the name useDebounce.
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
+              figureOpacity === 1
+                ? "card3 cardInactive"
+                : "card3Active cardActive"
             }
           >
-            Can be used to create a delay on search input updates, creating a smoother UX.
+            Can be used to create a delay on search input updates, creating a
+            smoother UX.
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card4 cardInactive" : "card4Active cardActive"
+              figureOpacity === 1
+                ? "card4 cardInactive"
+                : "card4Active cardActive"
             }
           >
             Can be used to limit the rate at which API queries occur.

@@ -1,4 +1,4 @@
-import { useState, useMemo, useLayoutEffect } from "react";
+import { useState, useMemo, useLayoutEffect, useEffect } from "react";
 import { intialItems } from "../utils/largeArray";
 import data from "../assets/data.jsx";
 import { CMirror } from "../components/Cmirror.jsx";
@@ -8,7 +8,25 @@ export default function UseMemoModule({ isDesktop }) {
   const [count, setCount] = useState(0);
   const [items] = useState(intialItems);
   const [figureOpacity, setFigureOpacity] = useState(1);
-  const [infoZIndex, setInfoZIndex] = useState(6)
+  const [infoZIndex, setInfoZIndex] = useState(3);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 250);
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+    if (figureOpacity === 1) {
+      setTimeout(() => {
+        setInfoZIndex(3);
+      }, 600);
+    } else {
+      setInfoZIndex(6);
+    }
+  }, [figureOpacity]);
 
   useLayoutEffect(() => {
     document.body.style.background =
@@ -28,7 +46,7 @@ export default function UseMemoModule({ isDesktop }) {
 
   return (
     <>
-      <header>useMemo</header>
+      <header className="useMemoHeader">useMemo</header>
       <main className="useMemoModuleMain">
         <section className="useMemoModuleSection">
           <button
@@ -52,17 +70,28 @@ export default function UseMemoModule({ isDesktop }) {
             bodyInitialState={data[2].bodyCode}
           />
         </figure>
-        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+        <div
+          style={{ zIndex: infoZIndex }}
+          className={
+            figureOpacity === 1
+              ? "infoCardContainer infoCardContainerInactive"
+              : "infoCardContainer infoCardContainerActive"
+          }
+        >
           <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
+              figureOpacity === 1
+                ? "card1 cardInactive"
+                : "card1Active cardActive"
             }
           >
             A hook used to prevent hefty expensive code from running needlessly
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
+              figureOpacity === 1
+                ? "card2 cardInactive"
+                : "card2Active cardActive"
             }
           >
             The useMemo hooks will only run when one of the values in the
@@ -70,9 +99,11 @@ export default function UseMemoModule({ isDesktop }) {
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
+              figureOpacity === 1
+                ? "card3 cardInactive"
+                : "card3Active cardActive"
             }
-          >           
+          >
             Can improve performance if used correctly, or worsen performance if
             misused.
           </div>

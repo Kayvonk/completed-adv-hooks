@@ -23,7 +23,7 @@ export default function UseRefModule() {
 }`},
 {bodyCode: `import { useEffect, useState } from "react";
 import { API } from "../utils/API.jsx";
-import { useDebounce } from "..
+import { useDebounce } from "../utils/useDebounce.jsx";
 
 export default function UseDebounceModule() {
   const [users, setUsers] = useState([]);

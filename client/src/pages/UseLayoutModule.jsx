@@ -5,7 +5,25 @@ import "../styles/useLayoutModule.css";
 
 export default function UseLayoutModule() {
   const [figureOpacity, setFigureOpacity] = useState(1);
-  const [infoZIndex, setInfoZIndex] = useState(6)
+  const [infoZIndex, setInfoZIndex] = useState(3);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 250);
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+    if (figureOpacity === 1) {
+      setTimeout(() => {
+        setInfoZIndex(3);
+      }, 600);
+    } else {
+      setInfoZIndex(6);
+    }
+  }, [figureOpacity]);
 
   const handleInfoBtn = () => {
     setFigureOpacity(figureOpacity === 1 ? 0.75 : 1);
@@ -23,7 +41,7 @@ export default function UseLayoutModule() {
 
   return (
     <>
-      <header>useLayoutEffect</header>
+      <header className="useLayoutEffectHeader">useLayoutEffect</header>
       <main className="useLayoutModuleMain">
         <figure style={{ opacity: figureOpacity }}>
           <CMirror
@@ -35,10 +53,19 @@ export default function UseLayoutModule() {
             bodyInitialState={data[3].bodyCode}
           />
         </figure>
-        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+        <div
+          style={{ zIndex: infoZIndex }}
+          className={
+            figureOpacity === 1
+              ? "infoCardContainer infoCardContainerInactive"
+              : "infoCardContainer infoCardContainerActive"
+          }
+        >
           <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
+              figureOpacity === 1
+                ? "card1 cardInactive"
+                : "card1Active cardActive"
             }
           >
             Behaves similarly to useEffect, but happens synchronously with the
@@ -46,14 +73,18 @@ export default function UseLayoutModule() {
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
+              figureOpacity === 1
+                ? "card2 cardInactive"
+                : "card2Active cardActive"
             }
           >
             As a result, a useLayoutEffect will always occur before a useEffect.
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
+              figureOpacity === 1
+                ? "card3 cardInactive"
+                : "card3Active cardActive"
             }
           >
             The page will not render until the code within the useLayoutEffect
@@ -61,7 +92,9 @@ export default function UseLayoutModule() {
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card4 cardInactive" : "card4Active cardActive"
+              figureOpacity === 1
+                ? "card4 cardInactive"
+                : "card4Active cardActive"
             }
           >
             Can be a bad idea on bigger operations since it blocks the rendering

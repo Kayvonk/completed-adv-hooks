@@ -8,7 +8,25 @@ export default function UseRefModule({ isDesktop }) {
   const previousSearchRef = useRef();
   const [searchTerm, setsearchTerm] = useState("");
   const [figureOpacity, setFigureOpacity] = useState(1);
-  const [infoZIndex, setInfoZIndex] = useState(6)
+  const [infoZIndex, setInfoZIndex] = useState(3);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 250);
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+    if (figureOpacity === 1) {
+      setTimeout(() => {
+        setInfoZIndex(3);
+      }, 600);
+    } else {
+      setInfoZIndex(6);
+    }
+  }, [figureOpacity]);
 
   useLayoutEffect(() => {
     document.body.style.background =
@@ -33,7 +51,7 @@ export default function UseRefModule({ isDesktop }) {
 
   return (
     <>
-      <header>useRef</header>
+      <header className="useRefHeader">useRef</header>
 
       <main className="useRefModuleMain">
         <section className="centeredSection useRefModuleSection">
@@ -61,31 +79,47 @@ export default function UseRefModule({ isDesktop }) {
             bodyInitialState={data[0].bodyCode}
           />
         </figure>
-        <div style={{zIndex: infoZIndex}} className={figureOpacity === 1 ? "infoCardContainer infoCardContainerInactive" : "infoCardContainer infoCardContainerActive" }>
+        <div
+          style={{ zIndex: infoZIndex }}
+          className={
+            figureOpacity === 1
+              ? "infoCardContainer infoCardContainerInactive"
+              : "infoCardContainer infoCardContainerActive"
+          }
+        >
           <div
             className={
-              figureOpacity === 1 ? "card1 cardInactive" : "card1Active cardActive"
+              figureOpacity === 1
+                ? "card1 cardInactive"
+                : "card1Active cardActive"
             }
           >
-           A ref from useRef does not trigger a rerender when its value changes.
+            A ref from useRef does not trigger a rerender when its value
+            changes.
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card2 cardInactive" : "card2Active cardActive"
+              figureOpacity === 1
+                ? "card2 cardInactive"
+                : "card2Active cardActive"
             }
           >
             Can be used for values that are not needed for rendering.
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card3 cardInactive" : "card3Active cardActive"
+              figureOpacity === 1
+                ? "card3 cardInactive"
+                : "card3Active cardActive"
             }
           >
             Can be used on a number of elements including inputs and forms.
           </div>
           <div
             className={
-              figureOpacity === 1 ? "card4 cardInactive" : "card4Active cardActive"
+              figureOpacity === 1
+                ? "card4 cardInactive"
+                : "card4Active cardActive"
             }
           >
             Can be used to hold the previous value of a state.
