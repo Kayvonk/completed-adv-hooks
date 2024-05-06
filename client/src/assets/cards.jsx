@@ -20,7 +20,8 @@ const cards = [
   {
     module: "useMemo",
     notes: [
-      "A hook used to prevent hefty expensive code from running needlessly.",
+      "A hook used to prevent hefty, expensive code from running needlessly.",
+      "The typical behavior of a component is to completely rerender when the value of any state changes.",
       "The useMemo hooks will only run when one of the values in the depencency array changes.",
       "Can improve performance if used correctly, or worsen performance if misused.",
     ],

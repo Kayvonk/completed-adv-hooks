@@ -6,6 +6,7 @@ import userData from "../assets/users.jsx";
 import { CMirror } from "../components/Cmirror.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfo } from "@fortawesome/free-solid-svg-icons";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 import "../styles/UseDebounceModule.css";
 
 export default function UseDebounceModule({ isDesktop }) {
@@ -16,14 +17,16 @@ export default function UseDebounceModule({ isDesktop }) {
   const [figureOpacity, setFigureOpacity] = useState(1);
   const [infoZIndex, setInfoZIndex] = useState(3);
   const [loading, setLoading] = useState(true);
-  const [buttonDisabled, setButtonDisabled] = useState(true)
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [showSummary, setShowSummary] = useState(false);
+  const [showReview, setShowReview] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 250);
     setTimeout(() => {
-      setButtonDisabled(false)
+      setButtonDisabled(false);
     }, 600);
   }, []);
 
@@ -36,8 +39,6 @@ export default function UseDebounceModule({ isDesktop }) {
     } else {
       setInfoZIndex(6);
     }
-
-
   }, [figureOpacity]);
 
   useLayoutEffect(() => {
@@ -50,10 +51,34 @@ export default function UseDebounceModule({ isDesktop }) {
   };
 
   const handleInfoBtn = () => {
-    setFigureOpacity(figureOpacity === 1 ? 0.75 : 1);
-    setButtonDisabled(true)
+    if (!showSummary && !showReview) {
+      setShowSummary(true);
+      setShowReview(false);
+      setFigureOpacity(0.75);
+    } else {
+      setShowSummary(false);
+      setShowReview(false);
+      setFigureOpacity(1);
+    }
+    setButtonDisabled(true);
     setTimeout(() => {
-      setButtonDisabled(false)
+      setButtonDisabled(false);
+    }, 600);
+  };
+
+  const handleReviewBtn = () => {
+    if (!showReview && !showSummary) {
+      setShowReview(true);
+      setShowSummary(false);
+      setFigureOpacity(0.75);
+    } else {
+      setShowReview(false);
+      setShowSummary(false);
+      setFigureOpacity(1);
+    }
+    setButtonDisabled(true);
+    setTimeout(() => {
+      setButtonDisabled(false);
     }, 600);
   };
 
@@ -107,34 +132,69 @@ export default function UseDebounceModule({ isDesktop }) {
         <div
           style={{ zIndex: infoZIndex }}
           className={
-            figureOpacity === 1
-              ? "infoCardContainer infoCardContainerInactive"
-              : "infoCardContainer infoCardContainerActive"
+            figureOpacity !== 1 && showSummary
+              ? "infoCardContainer infoCardContainerActive"
+              : "infoCardContainer infoCardContainerInactive"
           }
         >
           <div
             className={
-              figureOpacity === 1
-                ? "card1 cardInactive"
-                : "card1Active cardActive"
+              figureOpacity !== 1 && showSummary
+                ? "card1Active cardActive"
+                : "card1 cardInactive"
+            }
+          >
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This
+            example presents a custom hook which we’ve named useDebounce. The
+            concept of debouncing is prevalent in programming and refers to
+            ensuring that code does not execute more frequently than desired.
+            <br></br>
+            <br></br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In this
+            example, we’ve imported the custom hook into our component. The
+            imported function takes in two arguments, the initial value and the
+            delay. The function utilizes a setTimeout which assigns a state
+            based on the delay provided, then returns the state. In our
+            component, we are able to use the debounced value in the dependency
+            array of a useEffect. Since we’ve assigned the delay of the
+            useDebounce function to be 500ms, this ensures that the useEffect
+            will only fire after the debounced value has not changed for half of
+            a second. We’ve used this in order to create a smoother user
+            experience while using the search input. Give it a try!
+          </div>
+        </div>
+
+        <div
+          style={{ zIndex: infoZIndex }}
+          className={
+            figureOpacity !== 1 && showReview
+              ? "infoCardContainer infoCardContainerActive"
+              : "infoCardContainer infoCardContainerInactive"
+          }
+        >
+          <div
+            className={
+              figureOpacity !== 1 && showReview
+                ? "card1Active cardActive"
+                : "card1 cardInactive"
             }
           >
             Used to delay the execution of code.
           </div>
           <div
             className={
-              figureOpacity === 1
-                ? "card2 cardInactive"
-                : "card2Active cardActive"
+              figureOpacity !== 1 && showReview
+                ? "card2Active cardActive"
+                : "card2 cardInactive"
             }
           >
             This is commonly a custom hook created with the name useDebounce.
           </div>
           <div
             className={
-              figureOpacity === 1
-                ? "card3 cardInactive"
-                : "card3Active cardActive"
+              figureOpacity !== 1 && showReview
+                ? "card3Active cardActive"
+                : "card3 cardInactive"
             }
           >
             Can be used to create a delay on search input updates, creating a
@@ -142,17 +202,30 @@ export default function UseDebounceModule({ isDesktop }) {
           </div>
           <div
             className={
-              figureOpacity === 1
-                ? "card4 cardInactive"
-                : "card4Active cardActive"
+              figureOpacity !== 1 && showReview
+                ? "card4Active cardActive"
+                : "card4 cardInactive"
             }
           >
             Can be used to limit the rate at which API queries occur.
           </div>
         </div>
-        <button className="infoBtn" disabled={buttonDisabled} onClick={handleInfoBtn}>
-        <FontAwesomeIcon className="infoIcon" icon={faInfo} />
-        </button>
+        <div className="infoBtnsContainer">
+          <button
+            className="infoBtn"
+            disabled={buttonDisabled}
+            onClick={handleInfoBtn}
+          >
+            <FontAwesomeIcon className="infoIcon" icon={faInfo} />
+          </button>
+          <button
+            className="listBtn"
+            disabled={buttonDisabled}
+            onClick={handleReviewBtn}
+          >
+            <FontAwesomeIcon className="listIcon" icon={faList} />
+          </button>
+        </div>
       </main>
     </>
   );

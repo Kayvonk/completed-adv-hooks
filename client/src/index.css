@@ -62,7 +62,13 @@ figure {
   z-index: 5;
 }
 
-.infoBtn {
+.infoBtnsContainer {
+display: flex;
+flex-direction: column;
+z-index: 7;
+}
+
+.infoBtn, .listBtn {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-right: 25px;
@@ -70,7 +76,7 @@ figure {
   min-height: 50px;
   width: 50px;
   height: 50px;
-  z-index: 4;
+  z-index: 7;
   background-color: #dedede;
   border-radius: 50%;
   border: none;
@@ -86,23 +92,16 @@ figure {
   box-shadow: 10px 12px 10px -5px rgba(94, 94, 94, 0.75);
 }
 
-/* .hide {
-  display: none;
-}
-
-.show {
-  display: flex;
-} */
-
 .infoCardContainer {
   display: flex;
   flex-direction: column;
-  min-height: 70vh;
+  min-height: 50vh;
   align-items: center;
   justify-content: space-around;
   position: absolute;
-  bottom: 10vh;
+  bottom: 15vh;
   width: auto;
+  max-width: 600px;
   opacity: 0;
   z-index: 6;
   animation: containerAnimation 1s forwards ; 
@@ -124,10 +123,6 @@ figure {
 
 }
 
-/* .cardActive {
-  animation: slideDown linear .6s forwards;
-} */
-
 .card1Active{
   animation: slideDown linear .6s forwards;
 
@@ -146,16 +141,6 @@ figure {
   animation: slideDown linear .6s .3s forwards;
  
 }
-
-/* .infoCardContainerInactive {
-  animation: lowerZIndex linear .6s forwards;
-
-}
-
-.infoCardContainerActive {
-  animation: raiseZIndex linear .6s forwards;
-
-} */
 
 @keyframes lowerZIndex {
   0% {
@@ -231,6 +216,7 @@ figure {
     margin-top: 60px;
   }
   .infoCardContainer {
-    bottom: 15vh;
+    bottom: 30vh;
+    max-width: 90vw;
   }
 }

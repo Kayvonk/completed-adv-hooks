@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
-// import parse from "html-react-parser";
 import { javascript } from "@codemirror/lang-javascript";
 
 export const CMirror = ({

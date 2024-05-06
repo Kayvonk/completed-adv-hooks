@@ -32,7 +32,6 @@ function App() {
           <Route path="/useLayoutEffect" element={<UseLayoutModule />} exact />
         </Routes>
       </Router>
-      {/* <Footer /> */}
     </>
   );
 }
